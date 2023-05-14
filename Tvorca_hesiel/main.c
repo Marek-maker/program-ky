@@ -48,7 +48,7 @@ int main(){
     srand(time(NULL));
     for(int i = 0; i < dlzka; i++){
         znak = (rand()%(57-47)) + 47;
-        printf("novy znak: %c", znak);
+        printf("novy znak: %c\n", znak);
         fprintf(subor_s_heslom, "%c", znak);
     }
 
