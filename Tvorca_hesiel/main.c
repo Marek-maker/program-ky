@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(){
 
@@ -43,7 +45,10 @@ int main(){
     }while(dlzka < 1 || dlzka > 1000);
     
     char znak;
+    srand(time(NULL));
     for(int i = 0; i < dlzka; i++){
+        znak = (rand()%(57-47)) + 47;
+        printf("novy znak: %c", znak);
         fprintf(subor_s_heslom, "%c", znak);
     }
 
