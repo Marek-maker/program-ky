@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 //riešenie problému "Use of undeclared identifier 'bool'" z internetu
 #ifndef bool
     #define bool int
@@ -12,12 +11,12 @@
 
 int main(){
 
-    printf("Tvorca hesiel\n");
+    printf("-----------------Tvorca hesiel-------------------\n");
 
     FILE *subor_s_heslom;
 
  
-    if(fopen("HESLO.txt", "r") != NULL){
+    if(fopen("HESLO.txt", "r") != NULL){//skúsi otvoriť súbor, ak sa to podarí súbor už je a opýta sa čo s ním
         char odpoved;
         do{
             printf("Chyba! Subor HESLO.txt uz je. Chcete ho prepisat? (a/n): ");
@@ -37,7 +36,7 @@ int main(){
         }while(odpoved != 'a' && odpoved != 'n');
 
         
-    }else{
+    }else{//ak sa subor nepodarilo otvorit (neni alebo je s ním niečo zle) tak ho vytvorí
         subor_s_heslom = fopen("HESLO.txt", "w");
         fprintf(subor_s_heslom, "%s", "heslo: ");
         fclose(subor_s_heslom);
@@ -47,7 +46,7 @@ int main(){
 
     int dlzka = 0;
 
-    printf("Zadaj prosim ake dlhe ma byt tvoje heslo (1 až 1000): ");
+    printf("Zadaj prosim ake dlhe ma byt tvoje heslo (1 až 1000): ");//popýta sa na znakovú dlžku hesla (1-1000 zankov)
     do{
         scanf("%d", &dlzka); // zadaním iných znakov ako čísel sa vytvorý nekonečná sľučka :-{
         if(dlzka < 1 || dlzka > 1000){
@@ -56,7 +55,7 @@ int main(){
     }while(dlzka < 1 || dlzka > 1000);
     
     char znak;
-    bool cisla, male_pismena, velke_pismena, znaky;
+    bool cisla, male_pismena, velke_pismena, znaky;//premenne pamätajúce si čo chce mať vo svojom hesle
     
 
     do{//popita sa z čoho chce aby bolo heslo zložené (cisla, velke/male pismena, znaky)
