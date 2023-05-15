@@ -124,7 +124,23 @@ int main(){
 
     srand(time(NULL));
     for(int i = 0; i < dlzka; i++){
-        znak = rand()%(57-47) + 47+1;//+1 lebo to cele bolo posunuté dole - / , 0, 1 ...8 namiesto 0, 1, 2.....9
+
+        bool losovat_znova = 0;//toto je tu na to aby ked sa vylosuje nechcený znak z ASCII tabulky (<dačo>, alebo ak sú napr. čísla zakázané), aby sa losovalo znova
+        do{
+            losovat_znova = 0;//reset
+
+            znak = rand()%(122-33) + 33+1;//+1 lebo to cele bolo posunuté dole - / , 0, 1 ...8 namiesto 0, 1, 2.....9
+
+            if(cisla != 1 && (znak>=48/*0*/ && znak <= 57/*9*/)){
+                losovat_znova = 1;
+            }else if (male_pismena != 1 && (znak>=97/*a*/ && znak <= 122/*z*/)) {
+                losovat_znova = 1;
+            }else if (velke_pismena != 1 && (znak >= 65/*A*/ && znak <= 90/*Z*/)) {
+                losovat_znova = 1;
+            }
+        }while(losovat_znova == 1);
+
+        
         printf("novy znak: %c\n", znak);
         fprintf(subor_s_heslom, "%c", znak);
     }
