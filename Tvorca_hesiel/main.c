@@ -22,10 +22,10 @@ int main(){
             }else if(odpoved == 'n'){
                 printf("Nemozem vlozit heslo do suboru HESLO.txt, lebo uz je a nechces ho prepisat.\n");
                 return 1;
-            }else{
+            }else if(odpoved != 'a' && odpoved != 'n'){
                 printf("Neznama odpoved. Pouzi iba a alebo n!\n");
             }
-        }while(odpoved != 'a' || odpoved != 'n');
+        }while(odpoved != 'a' && odpoved != 'n');
 
         
     }else{
