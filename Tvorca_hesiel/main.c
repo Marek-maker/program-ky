@@ -19,6 +19,7 @@ int main(){
                 subor_s_heslom = fopen("HESLO.txt", "w");
                 fprintf(subor_s_heslom, "%s", "heslo: ");
                 fclose(subor_s_heslom);
+                subor_s_heslom = fopen("HESLO.txt", "a");
             }else if(odpoved == 'n'){
                 printf("Nemozem vlozit heslo do suboru HESLO.txt, lebo uz je a nechces ho prepisat.\n");
                 return 1;
@@ -40,7 +41,7 @@ int main(){
 
     printf("Zadaj prosim ake dlhe ma byt tvoje heslo (1 až 1000): ");
     do{
-        scanf("%d", &dlzka);
+        scanf("%d", &dlzka); // zadaním iných znakov ako čísel sa vytvorý nekonečná sľučka :-{
         if(dlzka < 1 || dlzka > 1000){
             printf("Zadaj platnu dlzku hesla od 1 do 1000!: \n");
         }
@@ -49,7 +50,7 @@ int main(){
     char znak;
     srand(time(NULL));
     for(int i = 0; i < dlzka; i++){
-        znak = rand()%(57-47) + 47;
+        znak = rand()%(57-47) + 47+1;//+1 lebo to cele bolo posunuté dole - / , 0, 1 ...8 namiesto 0, 1, 2.....9
         printf("novy znak: %c\n", znak);
         fprintf(subor_s_heslom, "%c", znak);
     }
