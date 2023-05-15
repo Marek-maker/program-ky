@@ -16,7 +16,9 @@ int main(){
             odpoved = getchar();
             if(odpoved == 'a'){
                 printf("Subor HESLO.txt bude prepisany.\n");
-                fprintf(fopen("HESLO.txt", "w"), "%c", "");
+                subor_s_heslom = fopen("HESLO.txt", "w");
+                fprintf(subor_s_heslom, "%c", " ");
+                fclose(subor_s_heslom);
             }else if(odpoved == 'n'){
                 printf("Nemozem vlozit heslo do suboru HESLO.txt, lebo uz je a nechces ho prepisat.\n");
                 return 1;
@@ -28,7 +30,7 @@ int main(){
         
     }else{
         subor_s_heslom = fopen("HESLO.txt", "w");
-        fprintf(subor_s_heslom, "%c", "");
+        fprintf(subor_s_heslom, "%c", " ");
         fclose(subor_s_heslom);
         printf("Vytvaram subor HESLO.txt do ktoreho bude zapisane tvoje heslo.\n");
         subor_s_heslom = fopen("HESLO.txt", "a");
@@ -52,6 +54,8 @@ int main(){
         fprintf(subor_s_heslom, "%c", znak);
     }
 
+
+    fclose(subor_s_heslom);
 
     return 0;
 }
